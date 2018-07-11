@@ -15,13 +15,13 @@ final public class ShapeList {
         return sl.isEmpty();
     }
 
-    public void addShape(Shape shape){
+    public void addShape(Shape shape) throws IllegalArgumentException{
         if(shape == null)
             throw new IllegalArgumentException();
         sl.add(shape);
     }
 
-    public void removeShape(Shape shape){
+    public void removeShape(Shape shape) throws IllegalArgumentException, IllegalStateException{
         if(!sl.contains(shape))
             throw new IllegalArgumentException();
         if(sl.isEmpty())
