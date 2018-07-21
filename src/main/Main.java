@@ -4,8 +4,7 @@ import controller.IJPaintController;
 import controller.JPaintController;
 import model.dialogs.DialogProvider;
 import model.interfaces.IDialogProvider;
-import model.persistence.ApplicationState;
-import model.persistence.clickHandler;
+import model.persistence.*;
 import view.gui.Gui;
 import view.gui.GuiWindow;
 import view.gui.PaintCanvas;
@@ -21,5 +20,6 @@ public class Main {
         IJPaintController controller = new JPaintController(uiModule, appState);
         controller.setup();
         canvas.addMouseListener(new clickHandler());
+
     }
 }
