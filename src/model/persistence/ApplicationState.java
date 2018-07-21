@@ -82,4 +82,9 @@ public class ApplicationState implements IApplicationState {
         activeShapeShadingType = ShapeShadingType.FILLED_IN;
         activeStartAndEndPointMode = StartAndEndPointMode.DRAW;
     }
+
+    public ShapeConfiguration getCurrentShapeConfiguration(){
+        return new ShapeConfiguration(activeShapeType, activePrimaryColor, activeSecondaryColor, activeShapeShadingType);
+    }
+
 }
