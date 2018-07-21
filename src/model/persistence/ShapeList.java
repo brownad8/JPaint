@@ -1,27 +1,27 @@
 package model.persistence;
 
 import java.util.ArrayList;
-import java.awt.*;
+import model.interfaces.IShape;
 
 final public class ShapeList {
 
     final private ArrayList sl;
 
     public ShapeList(){
-        sl = new ArrayList<Shape>();
+        sl = new ArrayList<IShape>();
     }
 
     public boolean isEmpty(){
         return sl.isEmpty();
     }
 
-    public void addShape(Shape shape) throws IllegalArgumentException{
+    public void addShape(IShape shape) throws IllegalArgumentException{
         if(shape == null)
             throw new IllegalArgumentException();
         sl.add(shape);
     }
 
-    public void removeShape(Shape shape) throws IllegalArgumentException, IllegalStateException{
+    public void removeShape(IShape shape) throws IllegalArgumentException, IllegalStateException{
         if(!sl.contains(shape))
             throw new IllegalArgumentException();
         if(sl.isEmpty())
