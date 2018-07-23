@@ -19,10 +19,13 @@ public class ApplicationState implements IApplicationState {
     private ShapeShadingType activeShapeShadingType;
     private StartAndEndPointMode activeStartAndEndPointMode;
 
+    public ShapeList shapeList;
+
     public ApplicationState(IUiModule uiModule) {
         this.uiModule = uiModule;
         this.dialogProvider = new DialogProvider(this);
         setDefaults();
+        shapeList = new ShapeList();
     }
 
     @Override
