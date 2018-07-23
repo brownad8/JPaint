@@ -5,7 +5,7 @@ import model.ShapeShadingType;
 import model.ShapeType;
 import model.interfaces.IShape;
 
-public class Triangle implements IShape {
+class Triangle implements IShape {
 
     private Point startPoint;
     private Point endPoint;

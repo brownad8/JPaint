@@ -5,7 +5,7 @@ import model.ShapeShadingType;
 import model.ShapeType;
 import model.interfaces.IShape;
 
-public class Ellipse implements IShape {
+class Ellipse implements IShape {
 
     private Point startPoint;
     private Point endPoint;
