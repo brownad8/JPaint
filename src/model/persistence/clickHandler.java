@@ -1,21 +1,56 @@
 package model.persistence;
 
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class clickHandler extends MouseAdapter {
+    Point mousePressedPoint;
+    Point mouseResleasedPoint;
+    Point startPoint;
+    Point endPoint;
 
     @Override
     public void mousePressed(MouseEvent e){
 
-        Point start = new Point(e.getX(), e.getY());
-        System.out.println("Starting point: x = " + start.getX() + ", y = " + start.getY());
+        mousePressedPoint = new Point(e.getX(), e.getY());
+        System.out.println("Mouse pressed: x = " + mousePressedPoint.getX() + ", y = " + mousePressedPoint.getY());
     }
 
     @Override
     public void mouseReleased(MouseEvent e){
 
-        Point end = new Point(e.getX(), e.getY());
-        System.out.println("Ending point: x = " + end.getX() + ", y = " + end.getY());
+        mouseResleasedPoint = new Point(e.getX(), e.getY());
+        int minX; int minY; int maxX; int maxY;
+
+        if(mousePressedPoint.getX() < mouseResleasedPoint.getX()){
+            minX = mousePressedPoint.getX();
+            maxX = mouseResleasedPoint.getX();
+        }else{
+            minX = mouseResleasedPoint.getX();
+            maxX = mousePressedPoint.getX();
+        }
+
+        if(mousePressedPoint.getY() < mouseResleasedPoint.getY()){
+            minY = mousePressedPoint.getY();
+            maxY = mouseResleasedPoint.getY();
+        }else{
+            minY = mouseResleasedPoint.getY();
+            maxY = mousePressedPoint.getY();
+        }
+
+        startPoint = new Point(minX, minY);
+        endPoint = new Point(maxX, maxY);
+
+        System.out.println("Mouse released: x = " + mouseResleasedPoint.getX() + ", y = " + mouseResleasedPoint.getY());
+        System.out.println("Start Point: x = " + startPoint.getX() + ", y = " + startPoint.getY());
+        System.out.println("End Point: x = " + endPoint.getX() + ", y = " + endPoint.getY());
+        System.out.print("\n");
+        //Graphics2D graphics2D = (Graphics2D)e.getComponent().getGraphics();
+        //graphics2D.setColor(Color.black);
+        //graphics2D.fillRect(12, 13, 200, 400);
+        //graphics2D.setStroke(new BasicStroke(5));
+        //graphics2D.setColor(Color.blue);
+        //graphics2D.drawRect(12,13, 200, 400);
     }
 }
