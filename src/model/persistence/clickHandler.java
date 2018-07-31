@@ -9,6 +9,11 @@ public class clickHandler extends MouseAdapter {
     Point mouseResleasedPoint;
     Point startPoint;
     Point endPoint;
+    ApplicationState appState;
+
+    public clickHandler(ApplicationState appState){
+        this.appState = appState;
+    }
 
     @Override
     public void mousePressed(MouseEvent e){

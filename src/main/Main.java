@@ -22,14 +22,7 @@ public class Main {
         ApplicationState appState = new ApplicationState(uiModule);
         IJPaintController controller = new JPaintController(uiModule, appState);
         controller.setup();
-        canvas.addMouseListener(new clickHandler());
-
-        Graphics2D graphics2D = canvas.getGraphics2D();
-        graphics2D.setColor(Color.black);
-        graphics2D.fillRect(12, 13, 200, 400);
-        graphics2D.setStroke(new BasicStroke(5));
-        graphics2D.setColor(Color.blue);
-        graphics2D.drawRect(12,13, 200, 400);
+        canvas.addMouseListener(new clickHandler(appState));
 
     }
 }
