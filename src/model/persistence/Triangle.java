@@ -5,6 +5,8 @@ import model.ShapeShadingType;
 import model.ShapeType;
 import model.interfaces.IShape;
 
+import java.awt.*;
+
 class Triangle implements IShape {
 
     private Point startPoint;
@@ -27,7 +29,20 @@ class Triangle implements IShape {
         return "Triangle";
     }
 
-    public void drawShape(){
-        //to be implemented
+    public void drawShape(Graphics2D graphics2D){
+
+        int startX = startPoint.getX();
+        int startY = startPoint.getY();
+        int endX = endPoint.getX();
+        int endY = endPoint.getY();
+        int[] xPoints = {startX, endX, startX};
+        int[] yPoints = {startY, endY, endY};
+        int nPoints = 3;
+
+        graphics2D.setColor(Color.black);
+        graphics2D.fillPolygon(xPoints, yPoints, nPoints);
+        graphics2D.setStroke(new BasicStroke(5));
+        graphics2D.setColor(Color.blue);
+        graphics2D.drawPolygon(xPoints, yPoints, nPoints);
     }
 }

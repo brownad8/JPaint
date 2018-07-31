@@ -5,6 +5,8 @@ import model.ShapeShadingType;
 import model.ShapeType;
 import model.interfaces.IShape;
 
+import java.awt.*;
+
 class Ellipse implements IShape {
 
     private Point startPoint;
@@ -27,8 +29,18 @@ class Ellipse implements IShape {
         return "Ellipse";
     }
 
-    public void drawShape(){
-        //to be implemented
+    public void drawShape(Graphics2D graphics2D){
+
+        int startX = startPoint.getX();
+        int startY = startPoint.getY();
+        int endX = endPoint.getX();
+        int endY = endPoint.getY();
+
+        graphics2D.setColor(Color.black);
+        graphics2D.fillOval(startX, startY, endX - startX, endY - startY);
+        graphics2D.setStroke(new BasicStroke(5));
+        graphics2D.setColor(Color.blue);
+        graphics2D.drawOval(startX, startY, endX - startX, endY - startY);
     }
 
 }
