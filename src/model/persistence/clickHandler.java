@@ -3,6 +3,9 @@ package model.persistence;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import controller.CreateShapeCommand;
+import controller.ICommand;
+import model.StartAndEndPointMode;
 
 public class clickHandler extends MouseAdapter {
     Point mousePressedPoint;
@@ -25,6 +28,8 @@ public class clickHandler extends MouseAdapter {
     @Override
     public void mouseReleased(MouseEvent e){
 
+        ICommand command = null;
+        StartAndEndPointMode startAndEndPointMode = appState.getActiveStartAndEndPointMode();
         mouseResleasedPoint = new Point(e.getX(), e.getY());
         int minX; int minY; int maxX; int maxY;
 
@@ -46,6 +51,12 @@ public class clickHandler extends MouseAdapter {
 
         startPoint = new Point(minX, minY);
         endPoint = new Point(maxX, maxY);
+
+        if(startAndEndPointMode == StartAndEndPointMode.DRAW){
+            command = new CreateShapeCommand(appState, startPoint, endPoint);
+        }
+
+        command.run();
 
         System.out.println("Mouse released: x = " + mouseResleasedPoint.getX() + ", y = " + mouseResleasedPoint.getY());
         System.out.println("Start Point: x = " + startPoint.getX() + ", y = " + startPoint.getY());
