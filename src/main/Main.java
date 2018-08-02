@@ -23,6 +23,7 @@ public class Main {
         IJPaintController controller = new JPaintController(uiModule, appState);
         controller.setup();
         canvas.addMouseListener(new clickHandler(appState));
+        Graphics2D graphics2D = canvas.getGraphics2D();
 
     }
 }
