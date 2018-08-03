@@ -38,11 +38,19 @@ class Triangle implements IShape {
         int[] xPoints = {startX, endX, startX};
         int[] yPoints = {startY, endY, endY};
         int nPoints = 3;
+        Color primaryColorConverted = ShapeColorMap.getMappingForShapeColor(primaryColor);
+        Color secondaryColorConverted = ShapeColorMap.getMappingForShapeColor(secondaryColor);
 
-        graphics2D.setColor(Color.black);
-        graphics2D.fillPolygon(xPoints, yPoints, nPoints);
-        graphics2D.setStroke(new BasicStroke(5));
-        graphics2D.setColor(Color.blue);
-        graphics2D.drawPolygon(xPoints, yPoints, nPoints);
+        if(shadingType != ShapeShadingType.OUTLINE) {
+            graphics2D.setColor(primaryColorConverted);
+            graphics2D.fillPolygon(xPoints, yPoints, nPoints);
+        }
+
+        if(shadingType != ShapeShadingType.FILLED_IN) {
+            graphics2D.setStroke(new BasicStroke(5));
+            graphics2D.setColor(secondaryColorConverted);
+            graphics2D.drawPolygon(xPoints, yPoints, nPoints);
+        }
     }
+
 }
