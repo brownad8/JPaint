@@ -3,9 +3,15 @@ package model.persistence;
 import java.util.ArrayList;
 import model.interfaces.IShape;
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Iterator;
+import controller.IObserver;
+
 final public class ShapeList {
 
-    final private ArrayList sl;
+    private List<IShape> sl;
+    private List<IObserver> observers = new LinkedList<IObserver>();
 
     public ShapeList(){
         sl = new ArrayList<IShape>();
@@ -19,6 +25,9 @@ final public class ShapeList {
         if(shape == null)
             throw new IllegalArgumentException();
         sl.add(shape);
+
+        for(IObserver observer : observers)
+            observer.update();
     }
 
     public void removeShape(IShape shape) throws IllegalArgumentException, IllegalStateException{
@@ -32,4 +41,13 @@ final public class ShapeList {
     public int numShapes(){
         return sl.size();
     }
+
+    public void registerObserver(IObserver observer){
+        observers.add(observer);
+    }
+
+    public List getIterable(){
+        return sl;
+    }
+
 }
