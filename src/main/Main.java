@@ -2,6 +2,7 @@ package main;
 
 import controller.IJPaintController;
 import controller.JPaintController;
+import controller.ShapeDrawer;
 import model.dialogs.DialogProvider;
 import model.interfaces.IDialogProvider;
 import model.persistence.ApplicationState;
@@ -11,6 +12,7 @@ import view.gui.GuiWindow;
 import view.gui.PaintCanvas;
 import view.interfaces.IGuiWindow;
 import view.interfaces.IUiModule;
+import controller.IObserver;
 
 import java.awt.*;
 
@@ -24,6 +26,8 @@ public class Main {
         controller.setup();
         canvas.addMouseListener(new clickHandler(appState));
         Graphics2D graphics2D = canvas.getGraphics2D();
+        IObserver shapeDrawer = new ShapeDrawer(appState.shapeList, graphics2D);
+        appState.shapeList.registerObserver(shapeDrawer);
 
     }
 }

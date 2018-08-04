@@ -22,7 +22,7 @@ public class clickHandler extends MouseAdapter {
     public void mousePressed(MouseEvent e){
 
         mousePressedPoint = new Point(e.getX(), e.getY());
-        System.out.println("Mouse pressed: x = " + mousePressedPoint.getX() + ", y = " + mousePressedPoint.getY());
+        //System.out.println("Mouse pressed: x = " + mousePressedPoint.getX() + ", y = " + mousePressedPoint.getY());
     }
 
     @Override
@@ -58,10 +58,10 @@ public class clickHandler extends MouseAdapter {
 
         command.run();
 
-        System.out.println("Mouse released: x = " + mouseResleasedPoint.getX() + ", y = " + mouseResleasedPoint.getY());
-        System.out.println("Start Point: x = " + startPoint.getX() + ", y = " + startPoint.getY());
-        System.out.println("End Point: x = " + endPoint.getX() + ", y = " + endPoint.getY());
-        System.out.print("\n");
+        //System.out.println("Mouse released: x = " + mouseResleasedPoint.getX() + ", y = " + mouseResleasedPoint.getY());
+        //System.out.println("Start Point: x = " + startPoint.getX() + ", y = " + startPoint.getY());
+        //System.out.println("End Point: x = " + endPoint.getX() + ", y = " + endPoint.getY());
+        //System.out.print("\n");
         //Graphics2D graphics2D = (Graphics2D)e.getComponent().getGraphics();
         //graphics2D.setColor(Color.black);
         //graphics2D.fillRect(12, 13, 200, 400);
