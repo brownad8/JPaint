@@ -38,13 +38,15 @@ class Ellipse implements IShape {
         Color primaryColorConverted = ShapeColorMap.getMappingForShapeColor(primaryColor);
         Color secondaryColorConverted = ShapeColorMap.getMappingForShapeColor(secondaryColor);
 
-        if(shadingType != ShapeShadingType.OUTLINE) {
-            graphics2D.setColor(primaryColorConverted);
-            graphics2D.fillOval(startX, startY, endX - startX, endY - startY);
-        }
+        graphics2D.setColor(primaryColorConverted);
+        graphics2D.setStroke(new BasicStroke(5));
 
-        if(shadingType != ShapeShadingType.FILLED_IN) {
-            graphics2D.setStroke(new BasicStroke(5));
+        if(shadingType == ShapeShadingType.FILLED_IN)
+            graphics2D.fillOval(startX, startY, endX - startX, endY - startY);
+        else if(shadingType == ShapeShadingType.OUTLINE)
+            graphics2D.drawOval(startX, startY, endX - startX, endY - startY);
+        else if(shadingType == ShapeShadingType.OUTLINE_AND_FILLED_IN){
+            graphics2D.fillOval(startX, startY, endX - startX, endY - startY);
             graphics2D.setColor(secondaryColorConverted);
             graphics2D.drawOval(startX, startY, endX - startX, endY - startY);
         }

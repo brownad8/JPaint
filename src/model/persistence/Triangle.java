@@ -41,13 +41,15 @@ class Triangle implements IShape {
         Color primaryColorConverted = ShapeColorMap.getMappingForShapeColor(primaryColor);
         Color secondaryColorConverted = ShapeColorMap.getMappingForShapeColor(secondaryColor);
 
-        if(shadingType != ShapeShadingType.OUTLINE) {
-            graphics2D.setColor(primaryColorConverted);
-            graphics2D.fillPolygon(xPoints, yPoints, nPoints);
-        }
+        graphics2D.setColor(primaryColorConverted);
+        graphics2D.setStroke(new BasicStroke(5));
 
-        if(shadingType != ShapeShadingType.FILLED_IN) {
-            graphics2D.setStroke(new BasicStroke(5));
+        if(shadingType == ShapeShadingType.FILLED_IN)
+            graphics2D.fillPolygon(xPoints, yPoints, nPoints);
+        else if(shadingType == ShapeShadingType.OUTLINE)
+            graphics2D.drawPolygon(xPoints, yPoints, nPoints);
+        else if(shadingType == ShapeShadingType.OUTLINE_AND_FILLED_IN){
+            graphics2D.fillPolygon(xPoints, yPoints, nPoints);
             graphics2D.setColor(secondaryColorConverted);
             graphics2D.drawPolygon(xPoints, yPoints, nPoints);
         }
