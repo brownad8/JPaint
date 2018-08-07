@@ -20,12 +20,14 @@ public class ApplicationState implements IApplicationState {
     private StartAndEndPointMode activeStartAndEndPointMode;
 
     public ShapeList shapeList;
+    public ShapeList selectedShapes;
 
     public ApplicationState(IUiModule uiModule) {
         this.uiModule = uiModule;
         this.dialogProvider = new DialogProvider(this);
         setDefaults();
         shapeList = new ShapeList();
+        selectedShapes = new ShapeList();
     }
 
     @Override
