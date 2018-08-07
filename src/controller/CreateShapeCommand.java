@@ -12,7 +12,7 @@ public class CreateShapeCommand implements ICommand{
     private ApplicationState appState;
     private Point startPoint;
     private Point endPoint;
-    private  ShapeConfiguration shapeConfiguration;
+    private ShapeConfiguration shapeConfiguration;
 
     public CreateShapeCommand(ApplicationState appState, Point startPoint, Point endPoint){
         this.appState = appState;
