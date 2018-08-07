@@ -15,6 +15,7 @@ class Rectangle implements IShape {
     private ShapeColor primaryColor;
     private ShapeColor secondaryColor;
     private ShapeShadingType shadingType;
+    private java.awt.Rectangle boundingBox;
 
     public Rectangle(Point startPoint, Point endPoint, ShapeConfiguration sc){
         this.startPoint = startPoint;
@@ -23,10 +24,16 @@ class Rectangle implements IShape {
         this.primaryColor = sc.getPrimaryColor();
         this.secondaryColor = sc.getSecondaryColor();
         this.shadingType = sc.getShadingType();
+        this.boundingBox = new java.awt.Rectangle(startPoint.getX(), startPoint.getY(),
+                endPoint.getX() - startPoint.getX(), endPoint.getY() - startPoint.getY());
     }
 
     public String toString(){
         return "Rectangle";
+    }
+
+    public java.awt.Rectangle getBoundingBox(){
+        return boundingBox;
     }
 
     public void drawShape(Graphics2D graphics2D){

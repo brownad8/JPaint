@@ -6,6 +6,7 @@ import model.ShapeType;
 import model.interfaces.IShape;
 
 import java.awt.*;
+import java.awt.Rectangle;
 
 class Ellipse implements IShape {
 
@@ -15,6 +16,7 @@ class Ellipse implements IShape {
     private ShapeColor primaryColor;
     private ShapeColor secondaryColor;
     private ShapeShadingType shadingType;
+    private java.awt.Rectangle boundingBox;
 
     public Ellipse(Point startPoint, Point endPoint, ShapeConfiguration sc){
         this.startPoint = startPoint;
@@ -23,10 +25,17 @@ class Ellipse implements IShape {
         this.primaryColor = sc.getPrimaryColor();
         this.secondaryColor = sc.getSecondaryColor();
         this.shadingType = sc.getShadingType();
+        this.boundingBox = new Rectangle(startPoint.getX(), startPoint.getY(),
+                endPoint.getX() - startPoint.getX(),endPoint.getY() - startPoint.getY());
+
     }
 
     public String toString(){
         return "Ellipse";
+    }
+
+    public Rectangle getBoundingBox(){
+        return boundingBox;
     }
 
     public void drawShape(Graphics2D graphics2D){

@@ -6,6 +6,7 @@ import model.ShapeType;
 import model.interfaces.IShape;
 
 import java.awt.*;
+import java.awt.Rectangle;
 
 class Triangle implements IShape {
 
@@ -15,6 +16,7 @@ class Triangle implements IShape {
     private ShapeColor primaryColor;
     private ShapeColor secondaryColor;
     private ShapeShadingType shadingType;
+    private Rectangle boundingBox;
 
     public Triangle(Point startPoint, Point endPoint, ShapeConfiguration sc){
         this.startPoint = startPoint;
@@ -23,10 +25,16 @@ class Triangle implements IShape {
         this.primaryColor = sc.getPrimaryColor();
         this.secondaryColor = sc.getSecondaryColor();
         this.shadingType = sc.getShadingType();
+        this.boundingBox = new Rectangle(startPoint.getX(), startPoint.getY(),
+                endPoint.getX() - startPoint.getX(), endPoint.getY() - startPoint.getY());
     }
 
     public String toString(){
         return "Triangle";
+    }
+
+    public Rectangle getBoundingBox(){
+        return boundingBox;
     }
 
     public void drawShape(Graphics2D graphics2D){
