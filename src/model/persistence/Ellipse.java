@@ -4,6 +4,7 @@ import model.ShapeColor;
 import model.ShapeShadingType;
 import model.ShapeType;
 import model.interfaces.IShape;
+import model.persistence.ShapeConfiguration;
 
 import java.awt.*;
 import java.awt.Rectangle;
@@ -17,6 +18,7 @@ class Ellipse implements IShape {
     private ShapeColor secondaryColor;
     private ShapeShadingType shadingType;
     private java.awt.Rectangle boundingBox;
+    private ShapeConfiguration shapeConfiguration;
 
     public Ellipse(Point startPoint, Point endPoint, ShapeConfiguration sc){
         this.startPoint = startPoint;
@@ -27,12 +29,21 @@ class Ellipse implements IShape {
         this.shadingType = sc.getShadingType();
         this.boundingBox = new Rectangle(startPoint.getX(), startPoint.getY(),
                 endPoint.getX() - startPoint.getX(),endPoint.getY() - startPoint.getY());
+        this.shapeConfiguration = sc;
 
     }
 
     public String toString(){
         return "Ellipse";
     }
+
+    public Point getStartPoint(){ return startPoint; }
+
+    public Point getEndPoint(){ return endPoint; }
+
+    public ShapeConfiguration getShapeConfiguration(){ return shapeConfiguration; }
+
+    public ShapeType getShapeType(){ return shapeType; }
 
     public Rectangle getBoundingBox(){
         return boundingBox;
