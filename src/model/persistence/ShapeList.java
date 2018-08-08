@@ -36,6 +36,9 @@ final public class ShapeList {
         if(sl.isEmpty())
             throw new IllegalStateException();
         sl.remove(shape);
+
+        for(IObserver observer : observers)
+            observer.update();
     }
 
     public int numShapes(){

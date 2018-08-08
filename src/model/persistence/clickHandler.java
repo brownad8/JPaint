@@ -5,6 +5,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import controller.CreateShapeCommand;
 import controller.ICommand;
+import controller.MoveShapeCommand;
 import controller.SelectShapeCommand;
 import model.StartAndEndPointMode;
 
@@ -57,6 +58,8 @@ public class clickHandler extends MouseAdapter {
             command = new CreateShapeCommand(appState, startPoint, endPoint);
         else if(startAndEndPointMode == StartAndEndPointMode.SELECT)
             command = new SelectShapeCommand(appState, startPoint, endPoint);
+        else if(startAndEndPointMode == StartAndEndPointMode.MOVE)
+            command = new MoveShapeCommand(appState);
 
         command.run();
 
