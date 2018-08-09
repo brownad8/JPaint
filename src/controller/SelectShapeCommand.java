@@ -21,7 +21,7 @@ public class SelectShapeCommand implements ICommand {
         this.startPoint = startPoint;
         this.endPoint = endPoint;
         this.selectedArea = new Rectangle(startPoint.getX(), startPoint.getY(),
-                endPoint.getX() - startPoint.getX(), endPoint.getY() - startPoint.getY());
+                (endPoint.getX() + 5) - startPoint.getX(), (endPoint.getY() + 5) - startPoint.getY());
     }
 
     @Override
