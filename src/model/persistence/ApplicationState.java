@@ -8,6 +8,7 @@ import model.dialogs.DialogProvider;
 import model.interfaces.IApplicationState;
 import model.interfaces.IDialogProvider;
 import view.interfaces.IUiModule;
+import model.interfaces.IShape;
 
 public class ApplicationState implements IApplicationState {
     private final IUiModule uiModule;
@@ -21,6 +22,7 @@ public class ApplicationState implements IApplicationState {
 
     public ShapeList shapeList;
     public ShapeList selectedShapes;
+    public ShapeList clipboard;
 
     public ApplicationState(IUiModule uiModule) {
         this.uiModule = uiModule;
@@ -28,6 +30,7 @@ public class ApplicationState implements IApplicationState {
         setDefaults();
         shapeList = new ShapeList();
         selectedShapes = new ShapeList();
+        clipboard = new ShapeList();
     }
 
     @Override
@@ -80,6 +83,12 @@ public class ApplicationState implements IApplicationState {
         return activeStartAndEndPointMode;
     }
 
+    public ShapeList getShapeList() { return shapeList; }
+
+    public ShapeList getSelectedShapes() { return selectedShapes; }
+
+    public ShapeList getClipboard() { return clipboard; }
+
     private void setDefaults() {
         activeShapeType = ShapeType.ELLIPSE;
         activePrimaryColor = ShapeColor.BLUE;
@@ -92,4 +101,21 @@ public class ApplicationState implements IApplicationState {
         return new ShapeConfiguration(activeShapeType, activePrimaryColor, activeSecondaryColor, activeShapeShadingType);
     }
 
+    public void removeFromShapeList(IShape shape){
+        shapeList.removeShape(shape);
+    }
+
+    public void addToShapeList(IShape shape){ shapeList.addShape(shape); }
+
+    public void emptyShapeList(){
+        shapeList = new ShapeList();
+    }
+
+    public void emptySelectedShapes() { selectedShapes = new ShapeList(); }
+
+    public void addToClipboard(IShape shape){
+        clipboard.addShape(shape);
+    }
+
+    public void emptyClipboard() { clipboard = new ShapeList(); }
 }
